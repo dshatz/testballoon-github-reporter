@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuite name='' hostname='localhost' tests='3' failures='0' skipped='0' errors='0' time='0.13' timestamp='2026-04-14T19:56:33'>
+  <properties />
+  <testcase name='Load library' classname='com.dshatz.kni.plugintest.BundlingTest' time='0.106' />
+  <testcase name='Call method' classname='com.dshatz.kni.plugintest.BundlingTest' time='0.008' />
+  <testcase name='Load bundled library' classname='com.dshatz.kni.plugintest.PrebuiltBundlingTest' time='0.016' />
+</testsuite>

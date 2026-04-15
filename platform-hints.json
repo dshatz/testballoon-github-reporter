@@ -1,0 +1,6 @@
+{
+  "reports/test-report-ubuntu-android*/**/*.xml": "Android",
+  "reports/test-report-windows-latest/**/*.xml": "Windows",
+  "reports/test-report-macos-latest/**/*.xml": "macOS",
+  "reports/test-report-ubuntu-latest/**/*.xml": "Linux"
+}

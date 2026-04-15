@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestSession ↘ @Default ↘ PackTests" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-04-11T13:09:00.288Z" hostname="Daniel-FW" time="0.085">
+  <properties/>
+  <testcase name="pack page transform[jvm]" classname="com.dshatz.pdfmp.PackTests" time="0.023"/>
+  <testcase name="pack render request[jvm]" classname="com.dshatz.pdfmp.PackTests" time="0.022"/>
+  <testcase name="pack failure throwing[jvm]" classname="com.dshatz.pdfmp.PackTests" time="0.025"/>
+  <testcase name="kotlin result ↘ pack failure[jvm]" classname="com.dshatz.pdfmp.PackTests" time="0.01"/>
+  <testcase name="kotlin result ↘ pack success[jvm]" classname="com.dshatz.pdfmp.PackTests" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

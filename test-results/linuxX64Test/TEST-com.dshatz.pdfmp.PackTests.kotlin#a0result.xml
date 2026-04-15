@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.dshatz.pdfmp.PackTests.kotlin result" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-04-10T23:17:20.849Z" hostname="Daniel-FW" time="0.011">
+  <properties/>
+  <testcase name="pack failure[linuxX64]" classname="com.dshatz.pdfmp.PackTests.kotlin result" time="0.01"/>
+  <testcase name="pack success[linuxX64]" classname="com.dshatz.pdfmp.PackTests.kotlin result" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

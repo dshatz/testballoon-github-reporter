@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuite name='' hostname='localhost' tests='10' failures='1' skipped='0' errors='0' time='0.453' timestamp='2026-04-14T18:43:15'>
+    <properties />
+    <testcase name='Strings' classname='kni.test.BridgeTest' time='0.023' />
+    <testcase name='ByteArray' classname='kni.test.BridgeTest' time='0.001' />
+    <testcase name='mixed' classname='kni.test.BridgeTest' time='0.002' />
+    <testcase name='negative long' classname='kni.test.BridgeTest' time='0.003' />
+    <testcase name='Alias type' classname='kni.test.BridgeTest' time='0.002' />
+    <testcase name='int' classname='kni.test.CallTest' time='0.003' />
+    <testcase name='direct ByteBuffer' classname='kni.test.CallTest' time='0.004' />
+    <testcase name='Alias type 〈2〉' classname='kni.test.CallTest' time='0.004' />
+    <testcase name='threaded' classname='kni.test.CallTest' time='0.008' />
+    <testcase name='spam native callbacks' classname='kni.test.CallTest' time='0.403'>
+        <failure>FAILED
+        </failure>
+    </testcase>
+</testsuite>
