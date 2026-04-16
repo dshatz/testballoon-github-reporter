@@ -14,7 +14,7 @@ inputs:
   github-token:
     description: 'GitHub Token for creating Check Runs'
     default: ${{ github.token }}
-    required: false
+    required: true
 
 runs:
   using: "composite"

@@ -1,5 +1,7 @@
 package com.dshatz.tbreport
 
+import com.dshatz.tbreport.github.Github
+import com.dshatz.tbreport.github.generateCheckRun
 import com.dshatz.tbreport.junit.JUnitFile
 import com.dshatz.tbreport.model.PlatformHints
 import com.dshatz.tbreport.model.getPlatform
@@ -9,11 +11,10 @@ import com.dshatz.tbreport.util.findFiles
 import kotlinx.cli.ArgParser
 import kotlinx.cli.ArgType
 import kotlinx.cli.required
+import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.Json
-import java.io.File
 import java.nio.file.Path
 import java.nio.file.Paths
-import kotlin.collections.emptyMap
 import kotlin.io.path.absolutePathString
 import kotlin.io.path.inputStream
 import kotlin.io.path.outputStream
@@ -28,6 +29,10 @@ fun main(args: Array<String>) {
         it.write(md.encodeToByteArray())
     }
     println("Written to ${output.absolutePathString()}")
+
+    runBlocking {
+        Github.createCheckRun(generateCheckRun(suites, md))
+    }
 }
 
 private data class Input(

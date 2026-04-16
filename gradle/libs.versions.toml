@@ -17,9 +17,11 @@ cli = { module = "org.jetbrains.kotlinx:kotlinx-cli", version = "0.3.6" }
 json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version = "1.11.0" }
 
 ktor-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
-ktor-engine = { module = "io.ktor:ktor-client-jetty", version.ref = "ktor" }
+ktor-engine = { module = "io.ktor:ktor-client-java", version.ref = "ktor" }
 ktor-cn = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 ktor-serial = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+logger = { module = "ch.qos.logback:logback-classic", version = "1.5.6" }
 
 [bundles]
-ktor = ["ktor-core", "ktor-engine", "ktor-cn", "ktor-serial"]
+ktor = ["ktor-core", "ktor-engine", "ktor-cn", "ktor-serial", "ktor-logging", "logger"]

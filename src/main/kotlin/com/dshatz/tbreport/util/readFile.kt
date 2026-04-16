@@ -30,9 +30,7 @@ fun matchesGlobPattern(pattern: String, path: String): Boolean {
 
     val matcher = FileSystems.getDefault().getPathMatcher("glob:$normalizedPattern")
     val relative = cwd.relativize(Path.of(path).toAbsolutePath().normalize())
-    return matcher.matches(relative).also {
-        println("$path matches pattern $pattern: $it. CWD: $cwd")
-    }
+    return matcher.matches(relative)
 }
 
 fun findFiles(startDir: String, pattern: String): List<JUnitFile> {
