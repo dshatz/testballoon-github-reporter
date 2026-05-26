@@ -24,6 +24,29 @@ runs:
       with:
         java-version: '21'
         distribution: 'temurin'
+    - name: Fetch Latest Successful Run ID from Master
+      id: get-run-id
+      env:
+        GH_TOKEN: ${{ inputs.github-token }}
+      shell: bash
+      run: |
+        RUN_ID=$(gh api "/repos/${{ github.repository }}/actions/runs?branch=master&status=success&per_page=1" --jq '.workflow_runs[0].id')
+        echo "latest_run_id=$RUN_ID" >> $GITHUB_OUTPUT
+    - name: Download Baseline from Master Branch
+      uses: actions/download-artifact@v8
+      continue-on-error: true
+      with:
+        name: results.json
+        github-token: ${{ inputs.github-token }}
+        run-id: ${{ steps.get-run-id.outputs.latest_run_id }}
+        path: tmp-baseline-dir
+    - name: Flatten Artifact File
+      shell: bash
+      run: |
+        if [ -f "tmp-baseline-dir/results.json" ]; then
+          mv tmp-baseline-dir/results.json ./previous-results.json
+          rm -rf tmp-baseline-dir
+        fi
     - name: Run TestBalloon
       env:
         GITHUB_TOKEN: ${{ inputs.github-token }}
@@ -36,3 +59,8 @@ runs:
           --platform-hints-file "${{ inputs.platform-hints-file }}" \
           --output summary.md
         cat summary.md >> $GITHUB_STEP_SUMMARY
+    - name: Upload results
+      uses: actions/upload-artifact@v7
+      with:
+        path: results.json
+        archive: false

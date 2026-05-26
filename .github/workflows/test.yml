@@ -3,11 +3,11 @@ name: Test
 on:
   push:
     branches:
-      - main
+      - master
       - develop
   pull_request_target:
     branches:
-      - main
+      - master
       - develop
 
 jobs:
@@ -15,6 +15,7 @@ jobs:
     if: github.event_name == 'push' || github.event_name == 'pull_request_target'
     permissions:
       contents: read
+      checks: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -32,7 +33,7 @@ jobs:
         with:
           cache-read-only: false
       - name: Run Tests
-        run: ./gradlew test
+        run: ./gradlew shadowJar test --no-daemon
 
       - name: Multiplatform Test Report
         uses: ./

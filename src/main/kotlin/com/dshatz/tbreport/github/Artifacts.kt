@@ -22,3 +22,9 @@ data class WorkflowRun(
     val id: Long,
     @SerialName("head_sha") val sha: String
 )
+
+
+@Serializable
+data class ArtifactContainer(
+    @SerialName("upload_url") val uploadUrl: String
+)

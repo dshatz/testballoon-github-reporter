@@ -14,13 +14,16 @@ import kotlinx.cli.ArgParser
 import kotlinx.cli.ArgType
 import kotlinx.cli.required
 import kotlinx.coroutines.runBlocking
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.decodeFromStream
 import java.nio.file.Path
 import java.nio.file.Paths
 import kotlin.io.path.absolutePathString
 import kotlin.io.path.inputStream
 import kotlin.io.path.outputStream
 
+@OptIn(ExperimentalSerializationApi::class)
 fun main(args: Array<String>) {
 
     val (files, platformHints, output) = parseArgsAndCollectFiles(args)
@@ -33,9 +36,18 @@ fun main(args: Array<String>) {
     println("Written to ${output.absolutePathString()}")
 
     runBlocking {
-        val latestResultsArtifact = Github.fetchArtifactInfo("main", "latest_results.json")
-        val last = Github.getLatestResults(latestResultsArtifact)
-        println("Last run tests: ${last.suites.countTotal()} (${last.suites.countSuccessful()})")
+        Github.writeResults(LatestResults(suites))
+
+        val last = runCatching {
+            Path.of("previous-results.json").inputStream().use {
+                Json.decodeFromStream<LatestResults>(it)
+            }
+        }.onFailure {
+            println("Failed to read previous-results.json: ${it.message}")
+        }.getOrNull()
+        if (last != null) {
+            println("Last run tests: ${last.suites.countTotal()} (${last.suites.countSuccessful()})")
+        }
         println("Current run tests: ${suites.countTotal()} (${suites.countSuccessful()})")
 
         Github.createCheckRun(generateCheckRun(suites, md))
@@ -100,7 +112,7 @@ private fun parseArgsAndCollectFiles(args: Array<String>): Input {
     return Input(
         files,
         platformHints,
-        Path.of(output)
+        Path.of(output),
     )
 }
 

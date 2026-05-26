@@ -14,16 +14,26 @@ import io.ktor.client.request.get
 import io.ktor.client.request.parameter
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
-import io.ktor.client.statement.bodyAsBytes
-import io.ktor.client.statement.bodyAsText
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
 import io.ktor.serialization.kotlinx.json.json
+import kotlinx.io.buffered
+import kotlinx.io.files.Path
+import kotlinx.io.files.SystemFileSystem
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.encodeToStream
+import kotlinx.serialization.json.io.encodeToSink
+import kotlin.io.path.outputStream
 
 object Github {
+    private val json = Json {
+        ignoreUnknownKeys = true
+        prettyPrint = true
+    }
     private val http = HttpClient(Java) {
         install(ContentNegotiation) {
-            json()
+            json(json)
         }
         install(Logging) {
             level = LogLevel.ALL
@@ -47,7 +57,7 @@ object Github {
         return System.getenv()["GITHUB_SHA"] ?: error("No env GITHUB_SHA")
     }
 
-    private val token: String = System.getenv()["GITHUB_TOKEN"] ?: error("No env GITHUB_TOKEN")
+    private val token: String by lazy { System.getenv()["GITHUB_TOKEN"] ?: error("No env GITHUB_TOKEN") }
 
     suspend fun createCheckRun(check: CheckRun) {
         val (owner, repo) = getOwnerAndRepo()
@@ -57,16 +67,23 @@ object Github {
         }
     }
 
-    suspend fun fetchArtifactInfo(branch: String, name: String): Artifact {
+    suspend fun fetchArtifactInfo(branch: String, name: String): Artifact? {
         val (owner, repo) = getOwnerAndRepo()
         return http.get("$owner/$repo/actions/artifacts") {
             parameter("branch", branch)
             parameter("name", name)
             parameter("per_page", 1)
-        }.body<ArtifactListResponse>().artifacts.first()
+        }.body<ArtifactListResponse>().artifacts.firstOrNull()
     }
 
     suspend fun getLatestResults(artifact: Artifact): LatestResults {
         return http.get(artifact.downloadUrl).body<LatestResults>()
+    }
+
+    @OptIn(ExperimentalSerializationApi::class)
+    fun writeResults(results: LatestResults) {
+        java.nio.file.Path.of("results.json").outputStream().buffered().use {
+            json.encodeToStream(results, it)
+        }
     }
 }
