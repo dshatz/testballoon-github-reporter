@@ -1,28 +1,21 @@
 ## com.dshatz.kni.buffers.BufferTest.invalid operations
 
-| Name | iosSimulatorArm64 | js, browser, Firefox149.0, Linux0.0.0 | js, browser, Firefox149.0, MacOS10.15 | js, browser, Firefox149.0, Windows10 | js, node | linuxX64 | macosArm64 | mingwX64 | tvosSimulatorArm64 | wasmJs, browser, Firefox149.0, Linux0.0.0 | wasmJs, browser, Firefox149.0, MacOS10.15 | wasmJs, browser, Firefox149.0, Windows10 | wasmJs, node | watchosSimulatorArm64 |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | 
-| allocate negative size | ✅ 2ms | ✅ 1ms | ✅ 1ms | ✅ 0s | ✅ 1ms | ✅ 1ms | ✅ 0s | ✅ 1ms | ✅ 0s | ✅ 0s | ✅ 1ms | ✅ 0s | ✅ 2ms | ✅ 0s |
-| read out of bounds | ✅ 1ms | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 2ms | ✅ 1ms | ✅ 0s | ✅ 1ms | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 0s |
-| read overflow destination | ✅ 1ms | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 5ms | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 1ms | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 0s |
-| read from negative offset | ✅ 1ms | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 3ms | ✅ 0s | ✅ 0s | ✅ 1ms | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 2ms | ✅ 1ms |
-| write negative offset | ✅ 65ms | ✅ 0s | ✅ 1ms | ✅ 1ms | ✅ 2ms | ✅ 25ms | ✅ 32ms | ✅ 65ms | ✅ 27ms | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 8ms | ✅ 29ms |
-| write past end | ✅ 36ms | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 24ms | ✅ 33ms | ✅ 40ms | ✅ 35ms | ✅ 0s | ✅ 1ms | ✅ 0s | ✅ 3ms | ✅ 18ms |
-### ✅ 108 tests passed
+| Name | iosSimulatorArm64 | js, browser, Firefox149.0, Linux0.0.0 | js, browser, Firefox149.0, MacOS10.15 | js, browser, Firefox149.0, Windows10 | js, node | macosArm64 | mingwX64 | tvosSimulatorArm64 | wasmJs, browser, Firefox149.0, Linux0.0.0 | wasmJs, browser, Firefox149.0, MacOS10.15 | wasmJs, browser, Firefox149.0, Windows10 | wasmJs, node | watchosSimulatorArm64 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | 
+| allocate negative size | ✅ 2ms | ✅ 1ms | ✅ 1ms | ✅ 0s | ✅ 1ms | ✅ 0s | ✅ 1ms | ✅ 0s | ✅ 0s | ✅ 1ms | ✅ 0s | ✅ 2ms | ✅ 0s |
+| read out of bounds | ✅ 1ms | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 2ms | ✅ 0s | ✅ 1ms | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 0s |
+| read overflow destination | ✅ 1ms | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 5ms | ✅ 0s | ✅ 0s | ✅ 1ms | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 0s |
+| read from negative offset | ✅ 1ms | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 3ms | ✅ 0s | ✅ 1ms | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 2ms | ✅ 1ms |
+| write negative offset | ✅ 65ms | ✅ 0s | ✅ 1ms | ✅ 1ms | ✅ 2ms | ✅ 32ms | ✅ 65ms | ✅ 27ms | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 8ms | ✅ 29ms |
+| write past end | ✅ 36ms | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 33ms | ✅ 40ms | ✅ 35ms | ✅ 0s | ✅ 1ms | ✅ 0s | ✅ 3ms | ✅ 18ms |
+### ✅ 102 tests passed
 ## com.dshatz.kni.buffers.BufferTest
 
-| Name | iosSimulatorArm64 | js, browser, Firefox149.0, Linux0.0.0 | js, browser, Firefox149.0, MacOS10.15 | js, browser, Firefox149.0, Windows10 | js, node | linuxX64 | macosArm64 | mingwX64 | tvosSimulatorArm64 | wasmJs, browser, Firefox149.0, Linux0.0.0 | wasmJs, browser, Firefox149.0, MacOS10.15 | wasmJs, browser, Firefox149.0, Windows10 | wasmJs, node | watchosSimulatorArm64 |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | 
-| write read | ✅ 1ms | ✅ 0s | ✅ 1ms | ✅ 0s | ✅ 4ms | ✅ 0s | ✅ 1ms | ✅ 1ms | ✅ 0s | ✅ 0s | ✅ 4ms | ✅ 1ms | ✅ 12ms | ✅ 0s |
-| release | ✅ 3ms | ✅ 0s | ✅ 0s | ✅ 1ms | ✅ 1ms | ✅ 4ms | ✅ 2ms | ✅ 1ms | ✅ 0s | ✅ 0s | ✅ 1ms | ✅ 1ms | ✅ 0s | ✅ 1ms | ✅ 0s | ✅ 2ms | ✅ 0s |
-| write read 〈2〉 | ✅ 5ms | ✅ 5ms | ✅ 4ms |
-| allocate negative size | ✅ 3ms | ✅ 2ms | ✅ 3ms |
-| read out of bounds | ✅ 12ms | ✅ 8ms | ✅ 9ms |
-| read overflow destination | ✅ 9ms | ✅ 6ms | ✅ 5ms |
-| read from negative offset | ✅ 5ms | ✅ 2ms | ✅ 1ms |
-| write negative offset | ✅ 26ms | ✅ 12ms | ✅ 32ms |
-| write past end | ✅ 17ms | ✅ 21ms | ✅ 24ms |
-### ✅ 60 tests passed
+| Name | iosSimulatorArm64 | js, browser, Firefox149.0, Linux0.0.0 | js, browser, Firefox149.0, MacOS10.15 | js, browser, Firefox149.0, Windows10 | js, node | macosArm64 | mingwX64 | tvosSimulatorArm64 | wasmJs, browser, Firefox149.0, Linux0.0.0 | wasmJs, browser, Firefox149.0, MacOS10.15 | wasmJs, browser, Firefox149.0, Windows10 | wasmJs, node | watchosSimulatorArm64 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | 
+| write read | ✅ 1ms | ✅ 0s | ✅ 1ms | ✅ 0s | ✅ 4ms | ✅ 1ms | ✅ 1ms | ✅ 0s | ✅ 0s | ✅ 4ms | ✅ 1ms | ✅ 12ms | ✅ 0s |
+| release | ✅ 3ms | ✅ 0s | ✅ 0s | ✅ 1ms | ✅ 1ms | ✅ 0s | ✅ 1ms | ✅ 1ms | ✅ 0s | ✅ 1ms | ✅ 0s | ✅ 2ms | ✅ 0s |
+### ✅ 34 tests passed
 ## com.dshatz.kni.buffers.JsBufferTest
 
 | Name | js, browser, Firefox149.0, Linux0.0.0 | js, browser, Firefox149.0, MacOS10.15 | js, browser, Firefox149.0, Windows10 | js, node |
@@ -31,7 +24,25 @@
 | to blob | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 4ms |
 | as int8array | ✅ 0s | ✅ 1ms | ✅ 0s | ✅ 2ms |
 ### ✅ 18 tests passed
-## com.dshatz.kni.buffers.JvmBufferTest
+## TestSession.@Default.BufferTest
+
+| Name | jvm (Linux) | jvm (Windows) | jvm (macOS) |
+| :--- | :--- | :--- | :--- | 
+| write read 〈2〉 | ✅ 5ms | ✅ 5ms | ✅ 4ms |
+| release | ✅ 4ms | ✅ 2ms | ✅ 1ms |
+### ✅ 6 tests passed
+## TestSession.@Default.BufferTest.invalid operations
+
+| Name | jvm (Linux) | jvm (Windows) | jvm (macOS) |
+| :--- | :--- | :--- | :--- | 
+| allocate negative size | ✅ 3ms | ✅ 2ms | ✅ 3ms |
+| read out of bounds | ✅ 12ms | ✅ 8ms | ✅ 9ms |
+| read overflow destination | ✅ 9ms | ✅ 6ms | ✅ 5ms |
+| read from negative offset | ✅ 5ms | ✅ 2ms | ✅ 1ms |
+| write negative offset | ✅ 26ms | ✅ 12ms | ✅ 32ms |
+| write past end | ✅ 17ms | ✅ 21ms | ✅ 24ms |
+### ✅ 18 tests passed
+## TestSession.@Default.JvmBufferTest
 
 | Name | jvm (Linux) | jvm (Windows) | jvm (macOS) |
 | :--- | :--- | :--- | :--- | 
@@ -40,12 +51,12 @@
 ### ✅ 6 tests passed
 ## com.dshatz.kni.buffers.NativeBufferTest
 
-| Name | iosSimulatorArm64 | linuxX64 | macosArm64 | mingwX64 | tvosSimulatorArm64 | watchosSimulatorArm64 |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | 
-| release native heap | ✅ 1ms | ✅ 0s | ✅ 1ms | ✅ 1ms | ✅ 0s | ✅ 1ms |
-| wrap ByteArray | ✅ 0s | ✅ 2ms | ✅ 0s | ✅ 0s | ✅ 1ms | ✅ 0s |
-| wrap address | ❌ 1ms | ✅ 1ms | ❌ 0s | ❌ 1ms | ❌ 0s | ✅ 1ms |
-### ❌ 4 / 18 tests failed
+| Name | iosSimulatorArm64 | macosArm64 | mingwX64 | tvosSimulatorArm64 | watchosSimulatorArm64 |
+| :--- | :--- | :--- | :--- | :--- | :--- | 
+| release native heap | ✅ 1ms | ✅ 1ms | ✅ 1ms | ✅ 0s | ✅ 1ms |
+| wrap ByteArray | ✅ 0s | ✅ 0s | ✅ 0s | ✅ 1ms | ✅ 0s |
+| wrap address | ❌ 1ms | ❌ 0s | ❌ 1ms | ❌ 0s | ✅ 1ms |
+### ❌ 4 / 15 tests failed
 <details >
 <summary >❌
 
@@ -728,121 +739,24 @@ kotlin.AssertionError: -103 should not equal -103
 
 </details>
 
-## kni.test.CallTest
-
-| Name | Android | jvm (Linux) |
-| :--- | :--- | :--- | 
-| int | ✅ 3ms | ✅ 5ms |
-| direct ByteBuffer | ✅ 4ms | ✅ 7ms |
-| Alias type 〈2〉 | ✅ 4ms | ✅ 5ms |
-| threaded | ✅ 8ms | ✅ 7ms |
-| spam native callbacks | ❌ 403ms | ✅ 242ms |
-### ❌ 1 / 10 tests failed
-<details >
-<summary >❌
-
- `spam native callbacks` on Android failed after 403ms
-
-
-</summary>
-<blockquote >
-
-| Name | Platform | Failure |
-| :--- | :--- | :--- | 
-| spam native callbacks ❌ | Android |  |
-```log
-FAILED
-        
-```
-
-</blockquote>
-
-</details>
-
-## kni.test.BridgeTest
-
-| Name | Android | jvm (Linux) |
-| :--- | :--- | :--- | 
-| Strings | ✅ 23ms | ✅ 52ms |
-| ByteArray | ✅ 1ms | ✅ 2ms |
-| mixed | ✅ 2ms | ✅ 2ms |
-| negative long | ✅ 3ms | ✅ 2ms |
-| Alias type | ✅ 2ms | ✅ 4ms |
-### ✅ 10 tests passed
-## com.dshatz.kni.plugintest.BundlingTest
-
-| Name | Android | jvm (Linux) |
-| :--- | :--- | :--- | 
-| Load library | ✅ 106ms | ✅ 58ms |
-| Call method | ✅ 8ms | ✅ 4ms |
-### ✅ 4 tests passed
-## com.dshatz.kni.plugintest.PrebuiltBundlingTest
-
-| Name | Android | jvm (Linux) |
-| :--- | :--- | :--- | 
-| Load bundled library | ✅ 16ms | ✅ 3ms |
-### ✅ 2 tests passed
-## CNameTesting
-
-| Name | jvm (Linux) |
-| :--- | :--- | 
-| bracket escaped | ✅ 60ms |
-| semicolon escaped | ✅ 0s |
-| ascii jni cname without class name | ✅ 2ms |
-| unicode character escaped | ✅ 0s |
-| ascii jni cname with class name | ✅ 1ms |
-| ascii name not escaped | ✅ 0s |
-| underscore escaped | ✅ 0s |
-### ✅ 7 tests passed
-## CharTypes.jchar
+## BufferTest
 
 | Name | linuxX64 |
 | :--- | :--- | 
-| latin | ✅ 1ms |
-| hiragana | ✅ 0s |
-| katakana | ✅ 1ms |
+| write read | ✅ 0s |
+| release | ✅ 1ms |
+| allocate negative size | ✅ 1ms |
+| read out of bounds | ✅ 0s |
+| read overflow destination | ✅ 1ms |
+| read from negative offset | ✅ 1ms |
+| write negative offset | ✅ 25ms |
+| write past end | ✅ 23ms |
+### ✅ 8 tests passed
+## NativeBufferTest
+
+| Name | linuxX64 |
+| :--- | :--- | 
+| release native heap | ✅ 1ms |
+| wrap ByteArray | ✅ 0s |
+| wrap address | ✅ 0s |
 ### ✅ 3 tests passed
-## BoolTypes.jboolean
-
-| Name | linuxX64 |
-| :--- | :--- | 
-| positive | ✅ 1ms |
-| negative | ✅ 0s |
-### ✅ 2 tests passed
-## IntTypes.jsize
-
-| Name | linuxX64 |
-| :--- | :--- | 
-| default | ✅ 0s |
-| same as jint | ✅ 0s |
-### ✅ 2 tests passed
-## ByteTypes.jbyte
-
-| Name | linuxX64 |
-| :--- | :--- | 
-| positive | ✅ 0s |
-| negative | ✅ 1ms |
-### ✅ 2 tests passed
-## BoolTypes.utils
-
-| Name | linuxX64 |
-| :--- | :--- | 
-| positive toKBoolean | ✅ 0s |
-| negative toKBoolean | ✅ 1ms |
-| positive toJBoolean | ✅ 0s |
-| negative toJBoolean | ✅ 1ms |
-### ✅ 4 tests passed
-## CharTypes.utils
-
-| Name | linuxX64 |
-| :--- | :--- | 
-| toKChar | ✅ 1ms |
-| toJChar | ✅ 0s |
-### ✅ 2 tests passed
-## IntTypes.jint
-
-| Name | linuxX64 |
-| :--- | :--- | 
-| positive | ✅ 1ms |
-| negative | ✅ 0s |
-### ✅ 2 tests passed

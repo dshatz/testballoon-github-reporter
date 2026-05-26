@@ -4,6 +4,8 @@ import com.dshatz.tbreport.github.Github
 import com.dshatz.tbreport.github.generateCheckRun
 import com.dshatz.tbreport.junit.JUnitFile
 import com.dshatz.tbreport.model.PlatformHints
+import com.dshatz.tbreport.model.countSuccessful
+import com.dshatz.tbreport.model.countTotal
 import com.dshatz.tbreport.model.getPlatform
 import com.dshatz.tbreport.parse.ParseJUnit
 import com.dshatz.tbreport.report.MultiplatformReporter
@@ -31,6 +33,11 @@ fun main(args: Array<String>) {
     println("Written to ${output.absolutePathString()}")
 
     runBlocking {
+        val latestResultsArtifact = Github.fetchArtifactInfo("main", "latest_results.json")
+        val last = Github.getLatestResults(latestResultsArtifact)
+        println("Last run tests: ${last.suites.countTotal()} (${last.suites.countSuccessful()})")
+        println("Current run tests: ${suites.countTotal()} (${suites.countSuccessful()})")
+
         Github.createCheckRun(generateCheckRun(suites, md))
     }
 }

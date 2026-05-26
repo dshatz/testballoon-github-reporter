@@ -1,8 +1,10 @@
 package com.dshatz.tbreport.model
 
 import com.dshatz.tbreport.junit.Failure
+import kotlinx.serialization.Serializable
 import kotlin.time.Duration
 
+@Serializable
 data class TestCase(
     val suitePath: List<String>,
     val name: String,

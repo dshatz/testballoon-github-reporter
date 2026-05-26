@@ -8,7 +8,8 @@ class TestNameTools {
     fun `simple testcase name`() {
         val n = TestName.ofRaw(
             "get page count",
-            "TestSession ↘ @Default ↘ rendererTests"
+            "TestSession ↘ @Default ↘ rendererTests",
+            "linuxX64"
         )
         assertEquals(
             "get page count",
@@ -29,7 +30,8 @@ class TestNameTools {
     fun `nested testcase name`() {
         val n = TestName.ofRaw(
             "rendering ↘ render one whole page",
-            "TestSession ↘ @Default ↘ rendererTests"
+            "TestSession ↘ @Default ↘ rendererTests",
+            "linuxX64"
         )
         assertEquals(
             "render one whole page",
@@ -46,7 +48,4 @@ class TestNameTools {
             n.suitePath
         )
     }
-
-
-
 }

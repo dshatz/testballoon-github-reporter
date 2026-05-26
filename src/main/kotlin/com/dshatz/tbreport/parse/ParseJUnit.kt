@@ -11,8 +11,8 @@ object ParseJUnit {
     fun parseFile(file: JUnitFile, platformHints: PlatformHints): List<TestSuite> {
         val tests = file.testCases.map {
             val match = namePlatformRegex.matchEntire(it.name) ?: error("Could not parse test name: ${it.name}")
-            val name = TestName.ofRaw(match.groupValues[1], file.name)
             val casePlatform = match.groupValues.getOrNull(2).takeUnless { it.isNullOrEmpty() }
+            val name = TestName.ofRaw(match.groupValues[1], file.name, casePlatform)
             TestCase(
                 suitePath = name.suitePath,
                 name = name.testName,
@@ -24,11 +24,12 @@ object ParseJUnit {
                 runner = file.runner
             )
         }
-        val suitePathSegments = file.name.split('↘').map { it.trim() }
-        return tests.groupBy { it.className }.map { (classname, cases) ->
+
+//        val suitePathSegments = file.name.split('↘').map { it.trim() }
+        return tests.groupBy { it.suitePath }.map { (classname, cases) ->
             TestSuite(
-                classname,
-                path = suitePathSegments.dropLast(1),
+                classname.joinToString("."),
+                path = classname,
                 cases = cases,
                 children = emptyList()
             )
