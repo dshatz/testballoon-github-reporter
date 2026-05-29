@@ -32,10 +32,12 @@ jobs:
         uses: gradle/actions/setup-gradle@v6
         with:
           cache-read-only: false
-      - name: Run Tests
-        run: ./gradlew shadowJar test --no-daemon
-
+      - name: Build and test
+        run: ./gradlew reporter:shadowJar reporter:test
+      - name: Sample multiplatform tests
+        run: ./gradlew sample:allTests
+        continue-on-error: true
       - name: Multiplatform Test Report
         uses: ./
         with:
-          reports: "build/test-results/**/*.xml"
+          reports: "sample/build/test-results/**/*.xml"

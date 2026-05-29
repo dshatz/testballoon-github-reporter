@@ -2,11 +2,14 @@
 kotlin = "2.3.10"
 xml = "1.0.0-rc2"
 ktor = "3.4.2"
+testBalloon = "1.0.0-K2.3.0"
 
 [plugins]
 jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+mp = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 serial = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 shadow = { id = "com.gradleup.shadow", version = "9.4.1" }
+test = { id = "de.infix.testBalloon", version.ref = "testBalloon" }
 
 
 [libraries]
@@ -22,6 +25,9 @@ ktor-cn = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "k
 ktor-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 ktor-serial = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 logger = { module = "ch.qos.logback:logback-classic", version = "1.5.6" }
+
+test-core = { module = "de.infix.testBalloon:testBalloon-framework-core", version.ref = "testBalloon" }
+test-kotest = { module = "de.infix.testBalloon:testBalloon-integration-kotest-assertions", version.ref = "testBalloon" }
 
 [bundles]
 ktor = ["ktor-core", "ktor-engine", "ktor-cn", "ktor-serial", "ktor-logging", "logger"]

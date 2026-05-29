@@ -1,4 +1,9 @@
-plugins {
-    id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
-}
+include(":reporter")
+include(":sample")
 rootProject.name = "testballoon-reporter"
+
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+    }
+}
