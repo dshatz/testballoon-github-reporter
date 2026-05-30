@@ -28,7 +28,17 @@ fun main(args: Array<String>) {
 
     val (files, platformHints, output) = parseArgsAndCollectFiles(args)
     val suites = ParseJUnit.parseMany(files, platformHints)
-    val md = MultiplatformReporter.generate(suites)
+
+    val last = runCatching {
+        Path.of("previous-results.json").inputStream().use {
+            Json.decodeFromStream<LatestResults>(it)
+        }
+    }.onFailure {
+        println("Failed to read previous-results.json: ${it.message}")
+    }.getOrNull()
+
+    val current = LatestResults(suites)
+    val md = MultiplatformReporter.generate(suites, current, last)
 
     output.outputStream().buffered().use {
         it.write(md.encodeToByteArray())
@@ -36,15 +46,8 @@ fun main(args: Array<String>) {
     println("Written to ${output.absolutePathString()}")
 
     runBlocking {
-        Github.writeResults(LatestResults(suites))
+        Github.writeResults(current)
 
-        val last = runCatching {
-            Path.of("previous-results.json").inputStream().use {
-                Json.decodeFromStream<LatestResults>(it)
-            }
-        }.onFailure {
-            println("Failed to read previous-results.json: ${it.message}")
-        }.getOrNull()
         if (last != null) {
             println("Last run tests: ${last.suites.countTotal()} (${last.suites.countSuccessful()})")
         }

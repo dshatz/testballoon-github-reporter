@@ -1,18 +1,27 @@
 package com.dshatz.tbreport.report
 
+import com.dshatz.tbreport.LatestResults
 import com.dshatz.tbreport.model.TestCase
 import com.dshatz.tbreport.model.TestSuite
 import com.dshatz.tbreport.report.Markdown.appendBlock
+import com.dshatz.tbreport.report.Markdown.appendNote
 import com.dshatz.tbreport.report.Markdown.makeTable
 
 object MultiplatformReporter {
 
 
-    fun generate(suites: List<TestSuite>): String {
+    fun generate(suites: List<TestSuite>, current: LatestResults, last: LatestResults?): String {
         return buildString {
             suites.groupBy { it.name }.forEach { (name, suites) ->
                 val cases = suites.asSequence().flatMap { it.cases }
                 appendLine("## $name")
+
+                val lastSuiteResults = last?.suites?.filter { it.name == name }?.flatMap { it.cases }
+                val lastRunCases = lastSuiteResults?.size
+                if (lastRunCases != null && lastRunCases > cases.count()) {
+                    appendNote("warning", "Less tests executed than in last run (${cases.count()} vs $lastRunCases)")
+                }
+
                 val table = cases.collectPlatformResults()
                 makeTable(table)
 

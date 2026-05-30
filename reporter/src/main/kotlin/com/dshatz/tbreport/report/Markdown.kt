@@ -88,12 +88,23 @@ object Markdown {
     fun StringBuilder.makeTable(
         entries: Sequence<Map<String, String>>
     ) {
+        val keys = entries.first().keys
         appendLine()
-        appendLine("| ${entries.first().keys.joinToString(" | ")} |")
+        appendLine("| ${keys.joinToString(" | ")} |")
         appendLine("| ${":--- | ".repeat(entries.first().size)}")
-        entries.forEach {
-            appendLine("| ${it.values.joinToString(" | ")} |")
+        entries.forEach { row ->
+            val filledEmpty = keys.map {
+                row[it].orEmpty()
+            }
+            appendLine("| ${filledEmpty.joinToString(" | ")} |")
         }
+    }
+
+    fun StringBuilder.appendNote(type: String, text: String) {
+        appendLine()
+        appendLine("> [!${type.uppercase()}]")
+        append("> $text")
+        appendLine()
     }
 
     fun StringBuilder.appendLines(text: String) {
