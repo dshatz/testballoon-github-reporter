@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="tb-report-format-jvm">
+    <output-path>$PROJECT_DIR$/tb-report-format/build/libs</output-path>
+    <root id="archive" name="tb-report-format-jvm.jar">
+      <element id="module-output" name="testballoon-reporter.tb-report-format.jvmMain" />
+    </root>
+  </artifact>
+</component>

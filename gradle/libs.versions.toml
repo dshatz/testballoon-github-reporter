@@ -3,6 +3,7 @@ kotlin = "2.3.10"
 xml = "1.0.0-rc2"
 ktor = "3.4.2"
 testBalloon = "1.0.0-K2.3.0"
+atomicfu = "0.33.0"
 
 [plugins]
 jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
@@ -10,6 +11,7 @@ mp = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 serial = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 shadow = { id = "com.gradleup.shadow", version = "9.4.1" }
 test = { id = "de.infix.testBalloon", version.ref = "testBalloon" }
+atomicfu = { id = "org.jetbrains.kotlinx.atomicfu", version.ref = "atomicfu" }
 
 
 [libraries]

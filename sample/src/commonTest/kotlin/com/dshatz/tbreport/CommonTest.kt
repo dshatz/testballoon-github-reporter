@@ -3,7 +3,7 @@ package com.dshatz.tbreport
 import de.infix.testBalloon.framework.core.testSuite
 import io.kotest.matchers.shouldBe
 
-val commonTest by testSuite {
+val sampleTests by testSuite() {
     test("2 plus 2") {
         (2 + 2) shouldBe 4
     }

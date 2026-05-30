@@ -4,4 +4,5 @@ plugins {
     alias(libs.plugins.serial) apply false
     alias(libs.plugins.shadow) apply false
     alias(libs.plugins.test) apply false
+    alias(libs.plugins.atomicfu) apply false
 }

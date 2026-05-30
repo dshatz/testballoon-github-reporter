@@ -5,18 +5,21 @@ import com.dshatz.tbreport.model.PlatformHints
 import com.dshatz.tbreport.model.TestCase
 import com.dshatz.tbreport.model.TestSuite
 import com.dshatz.tbreport.model.getPlatform
+import kotlin.io.path.Path
+import kotlin.io.path.name
+import kotlin.io.path.nameWithoutExtension
 
 object ParseJUnit {
 
     fun parseFile(file: JUnitFile, platformHints: PlatformHints): List<TestSuite> {
+        val path = Path(file.fileName)
+        val fileName = path.nameWithoutExtension
         val tests = file.testCases.map {
-            val match = namePlatformRegex.matchEntire(it.name) ?: error("Could not parse test name: ${it.name}")
-            val casePlatform = match.groupValues.getOrNull(2).takeUnless { it.isNullOrEmpty() }
-            val name = TestName.ofRaw(match.groupValues[1], file.name, casePlatform)
+            val name = TestName.fromFile(file.fileName, file.suiteName, it.name)
             TestCase(
                 suitePath = name.suitePath,
                 name = name.testName,
-                platform = casePlatform ?: platformHints.getPlatform(file.fileName) ?: "Unknown",
+                platform = name.platform ?: platformHints.getPlatform(file.fileName) ?: "Unknown",
                 pass = it.failure == null,
                 time = it.time,
                 className = it.className,
@@ -87,6 +90,4 @@ object ParseJUnit {
             children = newChildren
         )
     }
-
-    private val namePlatformRegex = Regex("^(.+?)(?:\\s*\\[(.+)\\])?$")
 }

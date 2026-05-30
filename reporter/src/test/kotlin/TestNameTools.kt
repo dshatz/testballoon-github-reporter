@@ -5,47 +5,52 @@ import kotlin.test.assertEquals
 class TestNameTools {
 
     @Test
-    fun `simple testcase name`() {
-        val n = TestName.ofRaw(
-            "get page count",
-            "TestSession ↘ @Default ↘ rendererTests",
-            "linuxX64"
+    fun `simple testcase name jvm`() {
+        val n = TestName.fromFile(
+            "TEST-suite_com.dshatz.tbreport.sampleTests",
+            "sampleTests[jvm]",
+            "2 plus 2[jvm]"
         )
         assertEquals(
-            "get page count",
+            "2 plus 2",
             n.testName
         )
 
         assertEquals(
             listOf(
-                "TestSession",
-                "@Default",
-                "rendererTests",
+                "sampleTests",
             ),
             n.suitePath
+        )
+
+        assertEquals(
+            "jvm",
+            n.platform
         )
     }
 
     @Test
-    fun `nested testcase name`() {
-        val n = TestName.ofRaw(
-            "rendering ↘ render one whole page",
-            "TestSession ↘ @Default ↘ rendererTests",
-            "linuxX64"
+    fun `testcase name linux`() {
+        val n = TestName.fromFile(
+            "TEST-linuxX64Test.sampleTests",
+            "linuxX64Test.sampleTests",
+            "2 plus 2[linuxX64]"
         )
         assertEquals(
-            "render one whole page",
+            "2 plus 2",
             n.testName
         )
 
         assertEquals(
             listOf(
-                "TestSession",
-                "@Default",
-                "rendererTests",
-                "rendering"
+                "sampleTests",
             ),
             n.suitePath
+        )
+
+        assertEquals(
+            "linuxX64",
+            n.platform
         )
     }
 }

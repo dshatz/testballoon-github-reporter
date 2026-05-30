@@ -1,14 +1,12 @@
 package com.dshatz.tbreport.junit
 
-import com.dshatz.tbreport.parse.InstantSerializerZ
 import kotlinx.serialization.Serializable
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
-import kotlin.time.Instant
 
 @Serializable
 @XmlSerialName("testsuite")
 data class JUnitFile(
-    val name: String,
+    @XmlSerialName("name") val suiteName: String,
     val tests: Int,
     val failures: Int,
     val time: Double,
