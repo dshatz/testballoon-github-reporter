@@ -6,20 +6,17 @@ import com.dshatz.tbreport.model.TestCase
 import com.dshatz.tbreport.model.TestSuite
 import com.dshatz.tbreport.model.getPlatform
 import kotlin.io.path.Path
-import kotlin.io.path.name
 import kotlin.io.path.nameWithoutExtension
 
 object ParseJUnit {
 
     fun parseFile(file: JUnitFile, platformHints: PlatformHints): List<TestSuite> {
-        val path = Path(file.fileName)
-        val fileName = path.nameWithoutExtension
         val tests = file.testCases.map {
-            val name = TestName.fromFile(file.fileName, file.suiteName, it.name)
+            val name = TestName.fromFile(file.fileName, it.name, it.className)
             TestCase(
                 suitePath = name.suitePath,
                 name = name.testName,
-                platform = name.platform ?: platformHints.getPlatform(file.fileName) ?: "Unknown",
+                platform = name.platform.takeUnless { it.isBlank() } ?: platformHints.getPlatform(file.fileName) ?: "Unknown",
                 pass = it.failure == null,
                 time = it.time,
                 className = it.className,
@@ -28,7 +25,6 @@ object ParseJUnit {
             )
         }
 
-//        val suitePathSegments = file.name.split('↘').map { it.trim() }
         return tests.groupBy { it.suitePath }.map { (classname, cases) ->
             TestSuite(
                 classname.joinToString("."),
@@ -37,14 +33,6 @@ object ParseJUnit {
                 children = emptyList()
             )
         }
-        /*val commonClassName = file.testCases.map { it.className }.toSet().singleOrNull()
-            ?: error("Test cases have different classnames: ${file.name}")
-        return TestSuite(
-            commonClassName,
-            suitePathSegments.dropLast(1),
-            tests,
-            emptyList(),
-        )*/
     }
 
     fun parseMany(

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuite name='' hostname='localhost' tests='10' failures='0' skipped='0' errors='0' time='0.572' timestamp='2026-06-02T04:52:04'>
+    <properties />
+    <testcase name='convert' classname='com.dshatz.kni.buffers.JvmBufferTest' time='0.033' />
+    <testcase name='write read' classname='com.dshatz.kni.buffers.JvmBufferTest' time='0.002' />
+    <testcase name='write read 〈2〉' classname='com.dshatz.kni.buffers.BufferTest' time='0.002' />
+    <testcase name='release' classname='com.dshatz.kni.buffers.BufferTest' time='0.002' />
+    <testcase name='allocate negative size' classname='com.dshatz.kni.buffers.BufferTest' time='0.002' />
+    <testcase name='read out of bounds' classname='com.dshatz.kni.buffers.BufferTest' time='0.005' />
+    <testcase name='read overflow destination' classname='com.dshatz.kni.buffers.BufferTest' time='0.004' />
+    <testcase name='read from negative offset' classname='com.dshatz.kni.buffers.BufferTest' time='0.003' />
+    <testcase name='write negative offset' classname='com.dshatz.kni.buffers.BufferTest' time='0.456' />
+    <testcase name='write past end' classname='com.dshatz.kni.buffers.BufferTest' time='0.063' />
+</testsuite>
