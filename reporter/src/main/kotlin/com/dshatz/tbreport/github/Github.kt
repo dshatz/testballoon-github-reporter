@@ -54,7 +54,7 @@ object Github {
     }
 
     fun getSha(): String {
-        return System.getenv()["GITHUB_SHA"] ?: error("No env GITHUB_SHA")
+        return System.getenv()["COMMIT_SHA"] ?: error("No env GITHUB_SHA")
     }
 
     private val token: String by lazy { System.getenv()["GITHUB_TOKEN"] ?: error("No env GITHUB_TOKEN") }
