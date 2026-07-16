@@ -15,6 +15,10 @@ inputs:
     description: 'GitHub Token for creating Check Runs'
     default: ${{ github.token }}
     required: true
+  sha:
+    description: 'Target commit SHA to add checks.'
+    default: ${{ github.event.pull_request.head.sha || github.sha }}
+    required: false
 
 runs:
   using: "composite"
@@ -51,6 +55,7 @@ runs:
       env:
         GITHUB_TOKEN: ${{ inputs.github-token }}
         HINTS_JSON: ${{ inputs.platform-hints }}
+        COMMIT_SHA: ${{ inputs.sha }}
       shell: bash
       run: |
         java -jar "${{ github.action_path }}/dist/testballoon-all.jar" \
