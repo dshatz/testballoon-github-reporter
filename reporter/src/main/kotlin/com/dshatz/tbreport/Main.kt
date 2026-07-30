@@ -2,7 +2,7 @@ package com.dshatz.tbreport
 
 import com.dshatz.tbreport.github.Github
 import com.dshatz.tbreport.github.generateCheckRun
-import com.dshatz.tbreport.junit.JUnitFile
+import com.dshatz.tbreport.junit.JUnitTestSuite
 import com.dshatz.tbreport.model.PlatformHints
 import com.dshatz.tbreport.model.countSuccessful
 import com.dshatz.tbreport.model.countTotal
@@ -58,7 +58,7 @@ fun main(args: Array<String>) {
 }
 
 private data class Input(
-    val files: List<JUnitFile>,
+    val files: List<JUnitTestSuite>,
     val platformHints: PlatformHints,
     val output: Path
 )

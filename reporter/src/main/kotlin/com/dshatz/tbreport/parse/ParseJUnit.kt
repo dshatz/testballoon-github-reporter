@@ -1,16 +1,14 @@
 package com.dshatz.tbreport.parse
 
-import com.dshatz.tbreport.junit.JUnitFile
+import com.dshatz.tbreport.junit.JUnitTestSuite
 import com.dshatz.tbreport.model.PlatformHints
 import com.dshatz.tbreport.model.TestCase
 import com.dshatz.tbreport.model.TestSuite
 import com.dshatz.tbreport.model.getPlatform
-import kotlin.io.path.Path
-import kotlin.io.path.nameWithoutExtension
 
 object ParseJUnit {
 
-    fun parseFile(file: JUnitFile, platformHints: PlatformHints): List<TestSuite> {
+    fun parseFile(file: JUnitTestSuite, platformHints: PlatformHints): List<TestSuite> {
         val tests = file.testCases.map {
             val name = TestName.fromFile(file.fileName, it.name, it.className)
             TestCase(
@@ -36,7 +34,7 @@ object ParseJUnit {
     }
 
     fun parseMany(
-        files: List<JUnitFile>,
+        files: List<JUnitTestSuite>,
         platformHints: PlatformHints
     ): List<TestSuite> {
         return files.flatMap { parseFile(it, platformHints) }
