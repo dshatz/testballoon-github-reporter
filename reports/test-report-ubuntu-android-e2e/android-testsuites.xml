@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+    <testsuite name='' hostname='localhost' tests='34' failures='0' skipped='0' errors='0' time='0.512' timestamp='2026-07-30T05:48:29'>
+        <properties />
+        <testcase name='Strings' classname='kni.test.BridgeTest' time='0.0' />
+        <testcase name='ByteArray' classname='kni.test.BridgeTest' time='0.016' />
+        <testcase name='mixed' classname='kni.test.BridgeTest' time='0.0' />
+        <testcase name='negative long' classname='kni.test.BridgeTest' time='0.018' />
+        <testcase name='Alias type' classname='kni.test.BridgeTest' time='0.0' />
+        <testcase name='custom serializer' classname='kni.test.BridgeTest' time='0.012' />
+        <testcase name='callable buffer' classname='kni.test.BridgeTest' time='0.0' />
+        <testcase name='LongArray parameter and return value' classname='kni.test.BridgeTest' time='0.112' />
+        <testcase name='ByteArray parameter and return value' classname='kni.test.BridgeTest' time='0.0' />
+        <testcase name='ShortArray parameter and return value' classname='kni.test.BridgeTest' time='0.012' />
+        <testcase name='BooleanArray parameter and return value' classname='kni.test.BridgeTest' time='0.009' />
+        <testcase name='CharArray parameter and return value' classname='kni.test.BridgeTest' time='0.0' />
+        <testcase name='DoubleArray parameter and return value' classname='kni.test.BridgeTest' time='0.007' />
+        <testcase name='FloatArray parameter and return value' classname='kni.test.BridgeTest' time='0.0' />
+        <testcase name='IntArray parameter and return value' classname='kni.test.BridgeTest' time='0.013' />
+        <testcase name='top-level' classname='kni.test.BridgeTest' time='0.0' />
+        <testcase name='zero copy buffer' classname='kni.test.BridgeTest' time='0.01' />
+        <testcase name='native instance' classname='kni.test.BridgeTest' time='0.0' />
+        <testcase name='native instance with callback' classname='kni.test.BridgeTest' time='0.0' />
+        <testcase name='native instance close' classname='kni.test.BridgeTest' time='0.025' />
+        <testcase name='nullable primitives' classname='kni.test.BridgeTest' time='0.0' />
+        <testcase name='int' classname='kni.test.CallTest' time='0.017' />
+        <testcase name='direct ByteBuffer' classname='kni.test.CallTest' time='0.0' />
+        <testcase name='Alias type 〈2〉' classname='kni.test.CallTest' time='0.019' />
+        <testcase name='threaded' classname='kni.test.CallTest' time='0.0' />
+        <testcase name='spam native callbacks' classname='kni.test.CallTest' time='0.049' />
+        <testcase name='callback with serializable' classname='kni.test.CallTest' time='0.0' />
+        <testcase name='result' classname='kni.test.CallTest' time='0.153' />
+        <testcase name='nullable string' classname='kni.test.CallTest' time='0.0' />
+        <testcase name='latin' classname='kni.test.SerializersTest' time='0.009' />
+        <testcase name='cyrillic' classname='kni.test.SerializersTest' time='0.0' />
+        <testcase name='serialize deserialize' classname='kni.test.SerializersTest' time='0.0' />
+        <testcase name='polymorphic' classname='kni.test.SerializersTest' time='0.031' />
+        <testcase name='enum' classname='kni.test.SerializersTest' time='0.0' />
+    </testsuite>
+</testsuites>

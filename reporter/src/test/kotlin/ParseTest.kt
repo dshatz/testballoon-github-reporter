@@ -8,7 +8,7 @@ class ParseTest {
     fun `firebase android result`() {
         val file = readFile("src/test/resources/test_result_1.xml")
 
-        val parsed = ParseJUnit.parseFile(file, mapOf("src/test/resources/**" to "Android"))
+        val parsed = ParseJUnit.parseFile(file.first(), mapOf("src/test/resources/**" to "Android"))
         println(parsed)
     }
 }

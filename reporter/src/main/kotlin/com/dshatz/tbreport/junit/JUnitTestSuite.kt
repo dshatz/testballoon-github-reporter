@@ -4,8 +4,14 @@ import kotlinx.serialization.Serializable
 import nl.adaptivity.xmlutil.serialization.XmlSerialName
 
 @Serializable
+@XmlSerialName("testsuites")
+data class AndroidJunitFile(
+    val suites: List<JUnitTestSuite>
+)
+
+@Serializable
 @XmlSerialName("testsuite")
-data class JUnitFile(
+data class JUnitTestSuite(
     @XmlSerialName("name") val suiteName: String,
     val tests: Int,
     val failures: Int,
