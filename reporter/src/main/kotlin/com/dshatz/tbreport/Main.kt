@@ -53,7 +53,12 @@ fun main(args: Array<String>) {
         }
         println("Current run tests: ${suites.countTotal()} (${suites.countSuccessful()})")
 
-        Github.createCheckRun(generateCheckRun(suites, md))
+        // Fork PRs get a read-only token, so creating a check run fails there. The summary is still published.
+        runCatching {
+            Github.createCheckRun(generateCheckRun(suites, md))
+        }.onFailure {
+            println("::warning::Could not create check run: ${it.message}")
+        }
     }
 }
 
